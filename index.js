@@ -7,15 +7,15 @@ const API_ENDPOINTS = [
     // 'https://htest.bigbooster.in/update', // Replace with your API endpoint 1
     // 'http://localhost:5001/update', // Replace with your API endpoint 1
     // 'https://0test.bigbooster.in/update', // Replace with your API endpoint 1
-    // 'https://apiv2.bigbooster.in/resume', // Replace with your API endpoint 1
-    'https://htest.bigbooster.in/resume', // Replace with your API endpoint 2
+    'https://apiv2.bigbooster.in/resume', // Replace with your API endpoint 1
+    // 'https://htest.bigbooster.in/resume', // Replace with your API endpoint 2
     // 'https://htest.bigbooster.in/home', // Replace with your API endpoint 2
     // 'https://htest.bigbooster.in/insert', // Replace with your API endpoint 2
     // Add more API endpoints as needed
   ];
   
-  const NUM_REQUESTS = 20000; // Number of API requests to make per endpoint
-  const CONCURRENCY_LEVEL = 1000; // Number of concurrent requests per endpoint
+  const NUM_REQUESTS = 50000; // Number of API requests to make per endpoint
+  const CONCURRENCY_LEVEL = 25000; // Number of concurrent requests per endpoint
   
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -52,7 +52,9 @@ const API_ENDPOINTS = [
           exam_id: 49,
           set_id: 1001,
           content_source_code: 789241
-          });
+          },
+          { timeout: 120000 }
+          );
             // const response = await axios.post(endpoint,{lic_no: "cwi1715", psw: "Temp@1234"}            );
             const requestEnd = performance.now();
             const requestDuration = requestEnd - requestStart;
